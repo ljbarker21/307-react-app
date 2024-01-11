@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Yaaaay working with react in 307
+          Yaaay starting to work with react in 307
         </p>
         <a
           className="App-link"
