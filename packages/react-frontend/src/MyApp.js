@@ -30,7 +30,10 @@ function MyApp() {
 
     return (
         <div className="container">
-        <Table characterData={characters}/>
+        <Table 
+            characterData={characters}
+            removeOneCharacter={removeOneCharacter}
+        />
         </div>
     );
 }
