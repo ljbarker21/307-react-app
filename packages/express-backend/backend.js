@@ -87,9 +87,10 @@ app.get("/users/:id", (req, res) => {
 });
 
 app.post("/users", (req, res) => {
-    const userToAdd = req.body;
+    const userToAdd = {id: Math.floor(Math.random()*1000).toString(), ...req.body};
+
     addUser(userToAdd);
-    res.send();
+    res.status(201).send(userToAdd);
 });
 
 app.delete("/users/:id", (req, res) => {
@@ -99,7 +100,7 @@ app.delete("/users/:id", (req, res) => {
     );
     if (index > -1) {
       users["users_list"].splice(index, 1);
-      res.sendStatus(200);
+      res.sendStatus(204);
     } else {
       res.sendStatus(404);
     }
