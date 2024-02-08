@@ -8,7 +8,8 @@ function MyApp() {
     useEffect(() => {
         fetchUsers()
             .then((res) => res.json())
-            .then((json) => setCharacters(json["users_list"]))
+            .then((json) => {
+            setCharacters(json["users_list"])})
             .catch((error) => { console.log(error); });
       }, [] );
 
@@ -16,7 +17,7 @@ function MyApp() {
         let id
         characters.forEach((character, i) => {
             if (i === index) {
-                id = character.id
+                id = character._id
             };
         });
         const updated = characters.filter((character, i) => {
@@ -53,16 +54,6 @@ function MyApp() {
         })
     }
 
-    return (
-        <div className="container">
-        <Table 
-            characterData={characters}
-            removeOneCharacter={removeOneCharacter}
-        />
-        <Form handleSubmit={updateList}/>
-        </div>
-    );
-
     function fetchUsers() {
         const promise = fetch("http://localhost:8000/users");
         return promise;
@@ -86,6 +77,16 @@ function MyApp() {
         });
         return promise;
     }
+
+    return (
+        <div className="container">
+        <Table 
+            characterData={characters}
+            removeOneCharacter={removeOneCharacter}
+        />
+        <Form handleSubmit={updateList}/>
+        </div>
+    );
 
     
 }

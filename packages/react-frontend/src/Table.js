@@ -12,10 +12,11 @@ function TableHeader() {
   }
   
   function TableBody(props) {
+    if(props.characterData === undefined) return null;
     const rows = props.characterData.map((row, index) => {
         return (
         <tr key={index}>
-            <td>{row.id}</td>
+            <td>{row._id}</td>
             <td>{row.name}</td>
             <td>{row.job}</td>
             <td>
